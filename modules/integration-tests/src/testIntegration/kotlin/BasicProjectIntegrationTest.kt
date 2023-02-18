@@ -88,7 +88,7 @@ private fun initDokkaProject(
     buildGradleKts = buildGradleKts
 
     var templateGradleBuild: String by projectFile("template.root.gradle.kts")
-    templateGradleBuild = ""
+//    templateGradleBuild = ""
 
     var templateGradleSettings: String by projectFile("template.settings.gradle.kts")
     templateGradleSettings = templateGradleSettings
@@ -101,6 +101,6 @@ private fun initDokkaProject(
 //        """maven("http""",
 //        """//maven("http""",
 //      )
-    templateGradleSettings = ""
+//    templateGradleSettings = ""
   }
 }
