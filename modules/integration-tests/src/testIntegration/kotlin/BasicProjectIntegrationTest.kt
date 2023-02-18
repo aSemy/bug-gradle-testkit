@@ -69,11 +69,6 @@ private fun initDokkaProject(
         """file("../customResources/""",
         """file("./customResources/""",
       )
-      // update relative paths to the template files - they're now in the same directory
-      .replace(
-        """../template.root.gradle.kts""",
-        """./template.root.gradle.kts""",
-      )
       .replace(
         """kotlin("jvm")""",
         """kotlin("jvm") version "1.7.22"""",
@@ -85,22 +80,5 @@ private fun initDokkaProject(
         """../template.settings.gradle.kts""",
         """./template.settings.gradle.kts""",
       )
-    buildGradleKts = buildGradleKts
-
-    var templateGradleBuild: String by projectFile("template.root.gradle.kts")
-//    templateGradleBuild = ""
-
-    var templateGradleSettings: String by projectFile("template.settings.gradle.kts")
-    templateGradleSettings = templateGradleSettings
-      .replace("for-integration-tests-SNAPSHOT", "1.7.20")
-//      .replace(
-//        """maven("https://cache-redirector.jetbrains.com/jcenter.bintray.com")""",
-//        """//maven("https://cache-redirector.jetbrains.com/jcenter.bintray.com")""",
-//      )
-//      .replace(
-//        """maven("http""",
-//        """//maven("http""",
-//      )
-//    templateGradleSettings = ""
   }
 }
