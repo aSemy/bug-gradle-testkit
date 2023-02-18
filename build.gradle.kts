@@ -1,5 +1,4 @@
 import buildsrc.utils.excludeGeneratedGradleDsl
-import buildsrc.utils.initIdeProjectLogo
 
 plugins {
   buildsrc.conventions.base
@@ -26,5 +25,3 @@ idea {
     )
   }
 }
-
-initIdeProjectLogo()
