@@ -6,7 +6,7 @@ import org.jetbrains.dokka.DokkaConfiguration
 import java.net.URL
 
 plugins {
-    kotlin("jvm") version "1.7.22"
+    kotlin("jvm")
     id("org.jetbrains.dokka")
 }
 

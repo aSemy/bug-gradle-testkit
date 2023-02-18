@@ -65,20 +65,8 @@ private fun initDokkaProject(
 
     buildGradleKts = buildGradleKts
       .replace(
-        // no idea why this needs to be changed
-        """file("../customResources/""",
-        """file("./customResources/""",
-      )
-      .replace(
         """kotlin("jvm")""",
         """kotlin("jvm") version "1.7.22"""",
-      )
-
-    // update relative paths to the template files - they're now in the same directory
-    settingsGradleKts = settingsGradleKts
-      .replace(
-        """../template.settings.gradle.kts""",
-        """./template.settings.gradle.kts""",
       )
 
     var templateGradleSettings: String by projectFile("template.settings.gradle.kts")
