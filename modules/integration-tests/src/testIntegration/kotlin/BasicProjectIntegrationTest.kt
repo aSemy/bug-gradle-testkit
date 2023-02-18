@@ -80,5 +80,9 @@ private fun initDokkaProject(
         """../template.settings.gradle.kts""",
         """./template.settings.gradle.kts""",
       )
+
+    var templateGradleSettings: String by projectFile("template.settings.gradle.kts")
+    templateGradleSettings = templateGradleSettings
+      .replace("for-integration-tests-SNAPSHOT", "1.7.20")
   }
 }
