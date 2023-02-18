@@ -50,7 +50,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           gradle-home-cache-cleanup: true
-          arguments: ${{ inputs.gradle-task }}
+          arguments: ${{ inputs.gradle-task }} --scan
 
       - name: Upload build reports
         if: failure()
