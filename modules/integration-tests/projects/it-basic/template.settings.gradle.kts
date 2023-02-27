@@ -27,7 +27,7 @@ pluginManagement {
         }
     }
     repositories {
-        mavenLocal()
+        //mavenLocal()
         maven("https://cache-redirector.jetbrains.com/jcenter.bintray.com")
         mavenCentral()
         gradlePluginPortal()
