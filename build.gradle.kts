@@ -1,27 +1,43 @@
-import buildsrc.utils.excludeGeneratedGradleDsl
+@file:Suppress("UnstableApiUsage") // jvm test suites & test report aggregation are incubating
+
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  buildsrc.conventions.base
-
-  idea
-
-  //id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.12.1"
+  kotlin("jvm") version embeddedKotlinVersion
+  kotlin("plugin.serialization") version embeddedKotlinVersion
 }
 
-group = "dev.adamko.dokkatoo"
-version = "0.0.2-SNAPSHOT"
+dependencies {
+  testImplementation(gradleTestKit())
+  testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$embeddedKotlinVersion")
 
+  testImplementation(platform("io.kotest:kotest-bom:5.5.5"))
+  testImplementation("io.kotest:kotest-assertions-core")
+  testImplementation("org.jetbrains.dokka:dokka-core:1.7.20")
+}
 
-idea {
-  module {
-    isDownloadSources = true
-    isDownloadJavadoc = false
-    excludeGeneratedGradleDsl(layout)
-    excludeDirs = excludeDirs + layout.files(
-      ".idea",
-      "gradle/kotlin-js-store",
-      "gradle/wrapper",
-      "externals/kotlin-dokka",
+tasks.withType<Test>().configureEach {
+  useJUnitPlatform()
+
+  testLogging {
+    events = setOf(
+      TestLogEvent.STARTED,
+      TestLogEvent.PASSED,
+      TestLogEvent.SKIPPED,
+      TestLogEvent.FAILED,
+      TestLogEvent.STANDARD_OUT,
+      TestLogEvent.STANDARD_ERROR,
     )
+    showStandardStreams = true
+    showExceptions = true
+    showCauses = true
+    showStackTraces = true
   }
+
+  val projectTestTempDirPath = "$buildDir/test-temp-dir"
+  inputs.property("projectTestTempDir", projectTestTempDirPath)
+  systemProperty("projectTestTempDir", projectTestTempDirPath)
+
+  systemProperty("integrationTestProjectsDir", "$projectDir/projects")
 }

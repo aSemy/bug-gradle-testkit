@@ -6,7 +6,7 @@ import org.jetbrains.dokka.DokkaConfiguration
 import java.net.URL
 
 plugins {
-    kotlin("jvm")
+    kotlin("jvm") version "1.7.22"
     id("org.jetbrains.dokka")
 }
 
@@ -18,7 +18,20 @@ buildscript {
 
 version = "1.7.20-SNAPSHOT"
 
-apply(from = "./template.root.gradle.kts")
+
+repositories {
+    maven("https://cache-redirector.jetbrains.com/jcenter.bintray.com")
+    mavenLocal()
+    mavenCentral()
+    google()
+    maven("https://cache-redirector.jetbrains.com/dl.bintray.com/kotlin/kotlin-eap")
+    maven("https://cache-redirector.jetbrains.com/dl.bintray.com/kotlin/kotlin-dev")
+    maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven") {
+        content {
+            includeGroup("org.jetbrains.kotlinx")
+        }
+    }
+}
 
 dependencies {
     implementation(kotlin("stdlib"))

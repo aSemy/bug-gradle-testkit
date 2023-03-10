@@ -35,9 +35,9 @@ dependencyResolutionManagement {
   }
 }
 
-include(
-  ":modules:integration-tests",
-)
+//include(
+//  ":modules:integration-tests",
+//)
 
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
