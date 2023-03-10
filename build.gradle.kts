@@ -5,7 +5,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   kotlin("jvm") version embeddedKotlinVersion
-  kotlin("plugin.serialization") version embeddedKotlinVersion
 }
 
 dependencies {

@@ -39,6 +39,11 @@ class BasicProjectIntegrationTest {
         "--info",
       )
       .forwardOutput()
+      //.withEnvironment(
+      //  mapOf(
+      //    "DOKKA_VERSION" to "1.7.20",
+      //  )
+      //)
       .withEnvironment(
         mapOf(
           "DOKKA_VERSION" to "1.7.20",
