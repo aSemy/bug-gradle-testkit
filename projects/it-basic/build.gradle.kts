@@ -7,7 +7,7 @@ import java.net.URL
 
 plugins {
     kotlin("jvm") version "1.7.22"
-    id("org.jetbrains.dokka")
+    id("org.jetbrains.dokka") version "1.7.10"
 }
 
 buildscript {
