@@ -1,7 +1,6 @@
 @file:Suppress("UnstableApiUsage") // jvm test suites & test report aggregation are incubating
 
 import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   kotlin("jvm") version embeddedKotlinVersion
@@ -13,7 +12,7 @@ dependencies {
 
   testImplementation(platform("io.kotest:kotest-bom:5.5.5"))
   testImplementation("io.kotest:kotest-assertions-core")
-  testImplementation("org.jetbrains.dokka:dokka-core:1.7.20")
+  testImplementation("org.jetbrains.dokka:dokka-core:2.0.0")
 }
 
 tasks.withType<Test>().configureEach {
@@ -34,7 +33,7 @@ tasks.withType<Test>().configureEach {
     showStackTraces = true
   }
 
-  val projectTestTempDirPath = "$buildDir/test-temp-dir"
+  val projectTestTempDirPath = "$projectDir/build/test-temp-dir"
   inputs.property("projectTestTempDir", projectTestTempDirPath)
   systemProperty("projectTestTempDir", projectTestTempDirPath)
 
